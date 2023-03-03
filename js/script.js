@@ -3,21 +3,21 @@ const loadData = async() => {
     const url = ' https://openapi.programming-hero.com/api/ai/tools';
     const response = await fetch(url);
     const data = await response.json();
-    displayData(data.data.tools);
+    displayData(data.data.tools.slice(0,6));
 }
 
 // Display Data
 const displayData = tools => {
-    // display six data
-    tools = tools.slice(0,6);
+    const cardContainer = document.getElementById('card-container');
+    cardContainer.textContent = '';
+
     // for of loop
     for(const tool of tools){
-        console.log(tool);
-        const cardContainer = document.getElementById('card-container');
+        // console.log(tool);
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('col');
         cardDiv.innerHTML = `
-        <div class="card p-3">
+        <div class="card p-3" style="height: 100%">
         <img src="${tool.image}" class="card-img-top" alt="...">
         <div class="card-body">
             <h4>Features</h4>
@@ -27,7 +27,7 @@ const displayData = tools => {
                 <li>${tool.features[2]}</li>
             </ol>
         </div>
-        <div style="width: 90%;" class="mx-auto border-top my-2"></div>
+        <div style="width: 95%;" class="mx-auto border-top my-2"></div>
         <div class="d-flex justify-content-between p-2">
             <div>
                 <h4>${tool.name}</h4>
@@ -41,6 +41,18 @@ const displayData = tools => {
         `;
         cardContainer.appendChild(cardDiv);
     }
+}
+
+// show more function
+const showMore = async() => {
+    const url = ' https://openapi.programming-hero.com/api/ai/tools';
+    const response = await fetch(url);
+    const data = await response.json();
+    displayData(data.data.tools);
+    
+    // remove show more button
+    const showMore = document.getElementById('show-more');
+    showMore.style.display = 'none';
 }
 
 loadData();
