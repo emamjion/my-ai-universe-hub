@@ -34,7 +34,7 @@ const displayData = tools => {
                 <p><i class="fa-solid fa-calendar-days pe-2 opacity-50"></i>${tool.published_in}</p>
             </div>
             <div>
-                <button class="px-3 py-2 border-0 bg-danger rounded-5 text-white"><i class="fa-solid fa-arrow-right"></i></button>
+                <button onclick="loadDetails('${tool.id}')" style="width:50px;height:50px;background:#FEF7F7;color:#EB5757" class="px-3 py-2 border-0 rounded-5 mt-3" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
@@ -73,5 +73,27 @@ const toggleSpinner = isLoading => {
     }
 }
 
+// loaded details
+const loadDetails = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    displayDetails(data.data);
+}
+
+// display details function
+const displayDetails = details => {
+    console.log(details);
+    const modalBody = document.getElementById('modal-body');
+    const modalInfo = document.getElementById('modal-left');
+    modalInfo.style.border = '1px solid red';
+    modalInfo.innerHTML = `
+        <h3>${details.description}</h3>
+    `;
+    const modalRight = document.getElementById('modal-right');
+    modalRight.innerHTML = `
+        <h1>World</h1>
+    `;
+}
 
 loadData();
