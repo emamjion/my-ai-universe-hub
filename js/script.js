@@ -41,18 +41,37 @@ const displayData = tools => {
         `;
         cardContainer.appendChild(cardDiv);
     }
+
+    // stop spinner
+    toggleSpinner(false);
 }
 
 // show more function
 const showMore = async() => {
+    // start spinner
+    toggleSpinner(true);
+
+    // loaded all data
     const url = ' https://openapi.programming-hero.com/api/ai/tools';
     const response = await fetch(url);
     const data = await response.json();
     displayData(data.data.tools);
-    
+
     // remove show more button
     const showMore = document.getElementById('show-more');
     showMore.style.display = 'none';
 }
+
+// toggle spinner function
+const toggleSpinner = isLoading => {
+    const spinnerSection = document.getElementById('spinner');
+    if(isLoading){
+        spinnerSection.classList.remove('d-none');
+    }
+    else{
+        spinnerSection.classList.add('d-none');
+    }
+}
+
 
 loadData();
