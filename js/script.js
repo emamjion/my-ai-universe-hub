@@ -83,6 +83,7 @@ const loadDetails = async(id) => {
 
 // display details function
 const displayDetails = details => {
+    // console.log(details)
     const heading = document.getElementById('heading');
     heading.innerText = `${details.description}`;
 
@@ -112,6 +113,23 @@ const displayDetails = details => {
         <p>${details.pricing ? details.pricing[2].plan : 'Enterprise'}</p>
     `;
     contactPricingContainer.appendChild(contactPriceDiv);
+
+    // features info
+    const featuresList = document.getElementById('features-list');
+    featuresList.innerHTML = `
+        <li>${details.features["1"].feature_name}</li>
+        <li>${details.features["2"].feature_name}</li>
+        <li>${details.features["3"].feature_name}</li>
+    `;
+
+    // Integreations 
+    const integrationsList = document.getElementById('integrations-list');
+    // console.log(details.integrations);
+    integrationsList.innerHTML = `
+        <li>${details.integrations ? details.integrations[0] : 'No data found'}</li>
+        <li>${details.integrations ? details.integrations[1] : 'No data found'}</li>
+        <li>${details.integrations ? details.integrations[2] : 'No data found'}</li>
+    `;
 
     // modal right side
     const modalRight = document.getElementById('modal-right');
