@@ -90,6 +90,7 @@ const displayDetails = details => {
     // basic pricing container 
     const basicPricingContainer = document.getElementById('basic-pricing-container');
     const basicPriceDiv = document.createElement('div');
+    basicPricingContainer.textContent = '';
     basicPriceDiv.innerHTML = `
         <p>${details.pricing ? details.pricing[0].price : 'free of Cost'}</p>
         <p>${details.pricing ? details.pricing[0].plan : 'Basic'}</p>
@@ -98,6 +99,7 @@ const displayDetails = details => {
 
     // pro pricing container 
     const proPricingContainer = document.getElementById('pro-pricing-container');
+    proPricingContainer.textContent = '';
     const proPriceDiv = document.createElement('div');
     proPriceDiv.innerHTML = `
         <p>${details.pricing ? details.pricing[1].price : 'free of Cost'}</p>
@@ -107,6 +109,7 @@ const displayDetails = details => {
 
     // contact pricing container 
     const contactPricingContainer = document.getElementById('contact-pricing-container');
+    contactPricingContainer.textContent = '';
     const contactPriceDiv = document.createElement('div');
     contactPriceDiv.innerHTML = `
         <p>${details.pricing ? details.pricing[2].price : 'free of Cost'}</p>
@@ -138,6 +141,21 @@ const displayDetails = details => {
         <h3 class="text-center p-3 w-100">${details.input_output_examples ? details.input_output_examples["0"].input : "Can you give any example?"}</h3>
         <p class="text-center fs-5 w-100">${details.input_output_examples ? details.input_output_examples["0"].output : "No! Not Yet! Take a break!!!"}</p>
     `;
+
+    // accuracy
+    // console.log(details.accuracy.score);
+    const accuracyValue = details.accuracy.score;
+    const accuracyElement = document.getElementById('accuracy-btn');
+    const accuracy = (accuracyValue * 100) + '% accuracy';
+    accuracyElement.innerHTML = accuracy;
+
+    const accuracyBtn = document.getElementById('accuracy-btn');
+    if(accuracyValue === null){
+        accuracyBtn.style.display = 'none';
+    }
+    else{
+        accuracyBtn.style.display = 'block';
+    }
 }
 
 loadData();
