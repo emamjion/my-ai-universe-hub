@@ -134,7 +134,9 @@ const displayDetails = details => {
     // modal right side
     const modalRight = document.getElementById('modal-right');
     modalRight.innerHTML = `
-        <h1>B</h1>
+        <img class="img-fluid rounded-2 w-100" src="${details.image_link[0]}">
+        <h3 class="text-center p-3 w-100">${details.input_output_examples ? details.input_output_examples["0"].input : "Can you give any example?"}</h3>
+        <p class="text-center fs-5 w-100">${details.input_output_examples ? details.input_output_examples["0"].output : "No! Not Yet! Take a break!!!"}</p>
     `;
 }
 
