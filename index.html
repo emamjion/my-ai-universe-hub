@@ -41,15 +41,30 @@
         <section>
         <!-- Modal -->
     <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header border-0 position-relative">
-                    <button style="width:50px;height:50px;background:#EB5757;" type="button" class=" border-0 position-absolute top-0 start-100 translate-middle rounded-5 bg-danger" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-white fs-5"></i></button>
+                    <button style="width:50px;height:50px;background:#EB5757;" type="button" class=" border-0 position-absolute top-0 start-100 translate-middle rounded-5" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark text-white fs-5"></i></button>
                 </div>
-                <div id="modal-body" class="modal-body">
-                    <div class="row g-4">
-                        <div id="modal-left" class="col cols-sm-1 cols-lg-2">
-                            A
+                <div id="modal-body" class="modal-body p-5">
+                    <div class="row g-5">
+                        <div id="modal-left" style="background:#FEF7F7;border:1px solid #EB5757" class="col cols-sm-1 cols-lg-2 rounded-3 p-3">
+                            <h3 id="heading" class="fs-3"></h3>
+                            <div class="row mx-4 mt-3">
+                                <div id="basic-pricing-container" style="width:130px;height:100px;color:#03A20A;" class="col cols-3 bg-white rounded-3 me-4 d-flex justify-content-center align-items-center flex-column fw-bolder text-center">
+                                    
+                                </div>
+                                <div id="pro-pricing-container" style="width:130px;height:100px;color:#F28927;" class="col cols-3 bg-white rounded-3 me-4 d-flex justify-content-center align-items-center flex-column fw-bolder text-center">
+                                    
+                                </div>
+                                <div id="contact-pricing-container" style="width:130px;height:100px;color:#EB5757;" class="col cols-3 bg-white rounded-3 me-4 d-flex justify-content-center align-items-center flex-column fw-bolder text-center">
+                                    
+                                </div>
+                                <!--  
+                                <div id="basic" style="width:130px;height:100px;" class="bg-white rounded-3 me-4">Basic</div>
+                                <div id="basic" style="width:130px;height:100px;" class="bg-white rounded-3">Basic</div>
+                                -->
+                            </div>
                         </div>
                         <div id="modal-right" class="col cols-sm-1 cols-lg-2">
                             B

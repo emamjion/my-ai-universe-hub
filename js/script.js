@@ -83,16 +83,40 @@ const loadDetails = async(id) => {
 
 // display details function
 const displayDetails = details => {
-    console.log(details);
-    const modalBody = document.getElementById('modal-body');
-    const modalInfo = document.getElementById('modal-left');
-    modalInfo.style.border = '1px solid red';
-    modalInfo.innerHTML = `
-        <h3>${details.description}</h3>
+    const heading = document.getElementById('heading');
+    heading.innerText = `${details.description}`;
+
+    // basic pricing container 
+    const basicPricingContainer = document.getElementById('basic-pricing-container');
+    const basicPriceDiv = document.createElement('div');
+    basicPriceDiv.innerHTML = `
+        <p>${details.pricing ? details.pricing[0].price : 'free of Cost'}</p>
+        <p>${details.pricing ? details.pricing[0].plan : 'Basic'}</p>
     `;
+    basicPricingContainer.appendChild(basicPriceDiv);
+
+    // pro pricing container 
+    const proPricingContainer = document.getElementById('pro-pricing-container');
+    const proPriceDiv = document.createElement('div');
+    proPriceDiv.innerHTML = `
+        <p>${details.pricing ? details.pricing[1].price : 'free of Cost'}</p>
+        <p">${details.pricing ? details.pricing[1].plan : 'Pro'}</p>
+    `;
+    proPricingContainer.appendChild(proPriceDiv);
+
+    // contact pricing container 
+    const contactPricingContainer = document.getElementById('contact-pricing-container');
+    const contactPriceDiv = document.createElement('div');
+    contactPriceDiv.innerHTML = `
+        <p>${details.pricing ? details.pricing[2].price : 'free of Cost'}</p>
+        <p>${details.pricing ? details.pricing[2].plan : 'Enterprise'}</p>
+    `;
+    contactPricingContainer.appendChild(contactPriceDiv);
+
+    // modal right side
     const modalRight = document.getElementById('modal-right');
     modalRight.innerHTML = `
-        <h1>World</h1>
+        <h1>B</h1>
     `;
 }
 
