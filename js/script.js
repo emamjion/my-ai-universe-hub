@@ -6,8 +6,9 @@ const loadData = async() => {
     displayData(data.data.tools.slice(0,6));
 }
 
+
 // Display Data
-const displayData = tools => {
+const displayData = tools => {    
     const cardContainer = document.getElementById('card-container');
     cardContainer.textContent = '';
 
@@ -127,7 +128,6 @@ const displayDetails = details => {
 
     // Integreations 
     const integrationsList = document.getElementById('integrations-list');
-    // console.log(details.integrations);
     integrationsList.innerHTML = `
         <li>${details.integrations ? details.integrations[0] : 'No data found'}</li>
         <li>${details.integrations ? details.integrations[1] : 'No data found'}</li>
@@ -157,5 +157,10 @@ const displayDetails = details => {
         accuracyBtn.style.display = 'block';
     }
 }
+
+// sort by date
+document.getElementById('sort-date').addEventListener('click',() => {
+    
+})
 
 loadData();
